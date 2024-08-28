@@ -2,7 +2,7 @@ import { useState } from 'react';
 import supabase from '../utils/supabase';
 import { useNavigate } from 'react-router-dom';
 
-
+//for now users register with email and password only, later username will be added 
 
 export default function Login() {
   const [email, setEmail] = useState('');
