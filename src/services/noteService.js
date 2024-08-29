@@ -13,7 +13,7 @@ export const fetchNotes = async () => {
 export const createNote = async (note) => {  
   const { data, error } = await supabase
   .from('notes')
-  .insert(note.title, note.content)
+  .insert([{title : note.title, content: note.content}])
   .select()
   console.log('data', data);
   console.log('error', error);
