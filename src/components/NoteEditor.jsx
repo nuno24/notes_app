@@ -96,56 +96,63 @@ export default function NoteEditor() {
   }
 
   return(
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-    <div className="bg-white p-6 rounded shadow-lg w-250">
-      <div className="flex flex-row justify-between items-center mb-4">
-        <h1 className="text-xl font-bold text-center mb-4">{userEmail}s Notes</h1>
-        <h2>
-          {id ? 'Edit Note' : 'New Note'}
-        </h2>
+<div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+  <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+    <div className="flex flex-row justify-between items-center mb-6">
+      <div className="flex space-x-4">
         <button 
-          className="ml-4"
+          className="text-gray-600 hover:text-gray-900 transition-colors"
           onClick={handleLogout}
+          title="Logout"
         >
-          X
+          Logout
         </button>
-        <button>
-          <Link to="/notes">Back</Link>
-        </button>
+        <Link to="/notes" className="text-blue-500 hover:text-blue-700 transition-colors">
+          Back
+        </Link>
         {id && (
-            <button
+          <button
             onClick={handleDelete}
-            className="ml-4"
+            className="text-red-500 hover:text-red-700 transition-colors"
+            title="Delete Note"
           >
             Delete
           </button>
         )}
-
       </div>
-
-      <form onSubmit={handleSubmit}>
-        <button className="w-full mb-4 p-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-          SAVE
-        </button>
-        <input 
-          id="title"
-          name="title"
-          type="text" 
-          value={note.title}
-          onChange={handleChange}
-          placeholder="Title" 
-          className="w-full p-2 mb-4 rounded border"
-        />
-        <textarea 
-          id="content"
-          name="content"
-          value={note.content}
-          onChange={handleChange}
-          placeholder="Content" 
-          className="w-full p-2 mb-4 rounded border"
-        />
-      </form>
     </div>
+
+    <h2 className="text-lg font-semibold mb-4">
+      {id ? 'Edit Note' : 'New Note'}
+    </h2>
+
+    <form onSubmit={handleSubmit}>
+      <input 
+        id="title"
+        name="title"
+        type="text" 
+        value={note.title}
+        onChange={handleChange}
+        placeholder="Title" 
+        className="w-full p-3 mb-4 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+      />
+      <textarea 
+        id="content"
+        name="content"
+        value={note.content}
+        onChange={handleChange}
+        placeholder="Content" 
+        className="w-full p-3 mb-4 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+      />
+      <button 
+        type="submit"
+        className="w-full p-3 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors font-semibold"
+      >
+        SAVE
+      </button>
+    </form>
   </div>
+</div>
+
   )
 }

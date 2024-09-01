@@ -2,7 +2,6 @@ import { useState } from 'react';
 import supabase from '../utils/supabase';
 import { useNavigate } from 'react-router-dom';
 
-//for now users register with email and password only, later username will be added 
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -48,11 +47,13 @@ export default function Login() {
 
 
   return (
-    <div>
-      <div className='bg-slate-500'>
-        <form onSubmit={isRegistering ? handleRegister : handleLogin} className='flex flex-col items-center justify-center h-screen'>
-          <h1 className='text-center bg-gray-800 text-white p-4 rounded'>Login</h1>
-          <label htmlFor='email' className='text-white'>Email</label>
+    <div className='flex items-center justify-center min-h-screen bg-gray-100'>
+      <div className='bg-white p-10 rounded-lg shadow-lg w-full max-w-sm'>
+        <form onSubmit={isRegistering ? handleRegister : handleLogin} className='flex flex-col items-center justify-center space-y-4'>
+          <h1 className='text-center text-2xl font-bold bg-gray-800 text-white p-4 rounded mb-4'>
+            {isRegistering ? 'Register' : 'Login'}
+          </h1>
+          <label htmlFor='email' className='text-black font-bold'>Email</label>
           <input 
             type='email' 
             placeholder='Email' 
@@ -63,7 +64,7 @@ export default function Login() {
             className='border border-gray-800 p-2 m-2 rounded'
             onChange={(e) => setEmail(e.target.value)}
           />
-          <label htmlFor='password' className='text-white'>Password</label>
+          <label htmlFor='password' className='text-black font-bold'>Password</label>
           <input 
             type='password' 
             placeholder='Password' 
@@ -74,7 +75,7 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
           {error && <p className='text-red-500'>{error}</p>}
-          <button type='submit'className='border border-gray-800 p-2 m-2 rounded'>Login</button>
+          <button type='submit'className='border border-gray-800 p-2 rounded bg-blue-500 text-white hover:bg-blue-600'>Login</button> 
           <p></p>
         </form>
 
