@@ -13,7 +13,7 @@ export default function NoteComponent( { title, content, date, handleDelete, id 
 
 
   return (
-    <div className="p-4 rounded shadow-md w-96 max-w-lg border m-3 bg-blue-100 hover:bg-blue-200 transition-colors">
+    <div className="p-4 rounded shadow-md border m-3 bg-blue-100 hover:bg-blue-200 transition-colors">
       <div className="flex items-start">
         <Link to={`/edit/${id}`} className="block flex-grow">
           <h1 className="text-lg font-bold mb-1 text-left">{title}</h1>

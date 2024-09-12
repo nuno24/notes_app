@@ -92,13 +92,12 @@ export default function NoteEditor() {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <div className="flex flex-row justify-between items-center mb-6">
-          <div className="flex flex-row justify-between items-center">
             <Link to="/notes" className="justify-self-center text-blue-500 hover:text-blue-700 transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5 mr-2">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </Link>
-            <h2 className="text-lg font-semibold mb-4">
+            <h2 className="text-lg font-semibold mb-4 text-center flex-grow">
               {id ? 'Edit Note' : 'New Note'}
             </h2>
             {id && (
@@ -110,7 +109,6 @@ export default function NoteEditor() {
               <DeleteIcon />
             </IconButton>
             )}
-          </div>
         </div>
 
         <form onSubmit={handleSubmit}>

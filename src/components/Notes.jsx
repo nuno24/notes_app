@@ -33,6 +33,7 @@ export default function Notes() {
       try {
         const notesData = await fetchNotes();
         setNotes(notesData);
+        console.log('Notes:', notesData);
       } catch (error) {
       console.error(error);
     }
@@ -57,9 +58,6 @@ export default function Notes() {
   return (
 <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
   <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-2xl">
-    <div className="flex flex-row justify-between items-center mb-6">
-      <h1 className="text-2xl font-bold">Welcome, {userEmail}</h1>
-    </div>
     <h2 className="text-xl font-semibold text-center mb-6">Your Notes</h2>
     <button 
       className="w-full mb-6 p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-semibold"
@@ -74,7 +72,7 @@ export default function Notes() {
             id={note.id}
             title={note.title} 
             content={note.content} 
-            date={note.date} 
+            date={new Date(note.date).toLocaleString()} 
             handleDelete={handleDelete}
           />
         </li>
