@@ -16,7 +16,6 @@ export default function Header() {
         } = await supabase.auth.getUser();
         if (user) {
           setUserEmail(user.email);
-          console.log('User:', user);
         }
       } catch (error) {
         console.error(error);
@@ -32,7 +31,6 @@ export default function Header() {
     if(error) {
       console.log('Error logging out:', error.message);
     } else {
-      console.log('Logged out');
       navigate('/');
     }
   }

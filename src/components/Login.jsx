@@ -22,9 +22,7 @@ export default function Login() {
     if (error) {
       setError(error.message)
     } else {
-      console.log('logged in')
       navigate('/notes')
-      //redirect to notes page 
     }
   };
 
@@ -39,7 +37,6 @@ export default function Login() {
     if (error) {
       setError(error.message)
     } else {
-      console.log('registered')
       setIsRegistering(false)
       navigate('/') 
     }

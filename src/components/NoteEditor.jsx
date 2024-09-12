@@ -6,7 +6,6 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function NoteEditor() {
-  const [userEmail, setUserEmail] = useState(null);
   const [note, setNote] = useState({title: '', content: ''});
   const {id} = useParams();
 
@@ -27,25 +26,11 @@ export default function NoteEditor() {
             title: data.title,
             content: data.content
           });
-          console.log('Note:', data);
         }
       }
       loadNote();
     }
-    const fetchUserData = async () => {
-      try {
-        const {
-          data: {user},
-        } = await supabase.auth.getUser();
-        if (user) {
-          setUserEmail(user.email);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
 
-    fetchUserData();
   }, [id]);
 
 
@@ -81,7 +66,6 @@ export default function NoteEditor() {
   const handleDelete = async () => {
     try{
       await deleteNote(id);
-      console.log('Note deleted');
       navigate('/notes');
     } catch(error) {
       console.error('Error deleting:',error);

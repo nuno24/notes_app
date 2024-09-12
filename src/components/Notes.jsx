@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import supabase from "../utils/supabase";
 import { useNavigate } from 'react-router-dom';
 import NoteComponent from "./NoteComponent";
 import { deleteNote, fetchNotes } from "../services/noteService";
 
 export default function Notes() {
   const [notes, setNotes] = useState([]);
-  const [userEmail, setUserEmail] = useState(null);
 
   const navigate = useNavigate();
 
@@ -15,32 +13,17 @@ export default function Notes() {
   }
 
   useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const {
-          data: {user},
-        } = await supabase.auth.getUser();
-        if (user) {
-          setUserEmail(user.email);
-          console.log('User:', user);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
 
     const loadNotes = async () => {
       try {
         const notesData = await fetchNotes();
         setNotes(notesData);
-        console.log('Notes:', notesData);
       } catch (error) {
       console.error(error);
     }
     }
 
     loadNotes();
-    fetchUserData();
   }, []);
 
 
@@ -48,7 +31,6 @@ export default function Notes() {
     try{
       await deleteNote(id);
       setNotes(notes.filter((note) => note.id !== id));
-      console.log('Note deleted');
     } catch(error) {
       console.error(error);
     }
